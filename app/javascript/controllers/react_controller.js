@@ -1,9 +1,18 @@
 import { Controller } from '@hotwired/stimulus';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from '../components/App';
+import { ChakraProvider } from '@chakra-ui/react';
 
 // Connects to data-controller="react"
 export default class extends Controller {
   connect() {
-    console.log('React controller connected');
-    const app = document.getElementById('app');
+    ReactDOM.createRoot(document.getElementById('app')).render(
+      <React.StrictMode>
+        <ChakraProvider>
+          <App />
+        </ChakraProvider>
+      </React.StrictMode>
+    );
   }
 }
