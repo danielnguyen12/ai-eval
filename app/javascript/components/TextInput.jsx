@@ -3,21 +3,21 @@ import { Textarea, Button, useToast } from '@chakra-ui/react';
 
 const TextInput = ({ evaluateWriting }) => {
   const [prompt, setPrompt] = useState('');
-  const [studentResponse, setStudentResponse] = useState('');
+  const [writingSample, setWritingSample] = useState('');
 
   const toast = useToast();
 
   const submit = () => {
-    if (prompt.length < 11 || studentResponse.length < 11) {
+    if (prompt.length < 11 || writingSample.length < 11) {
       toast({
-        title: 'Prompt & Student Response',
+        title: 'Prompt & Writing Sample',
         description: 'must be at least 10 characters',
         status: 'error',
         duration: 3000,
         isClosable: false,
       });
     } else {
-      evaluateWriting(prompt, studentResponse);
+      evaluateWriting(prompt, writingSample);
     }
   };
 
@@ -36,13 +36,13 @@ const TextInput = ({ evaluateWriting }) => {
 
       <Textarea
         bg="whiteAlpha.900"
-        placeholder="Student Response"
+        placeholder="Writing Sample"
         color="black"
         padding={4}
         marginTop={1}
         height={200}
-        value={studentResponse}
-        onChange={(e) => setStudentResponse(e.target.value)}
+        value={writingSample}
+        onChange={(e) => setWritingSample(e.target.value)}
       />
 
       <Button
